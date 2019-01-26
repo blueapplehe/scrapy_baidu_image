@@ -3,7 +3,7 @@
 
 说明
 
-1选取了'http://image.baidu.com/search/flip?tn=baiduimage&ie=utf-8&word='+search_word地址搜索图片，该地址有返回页码，比较容易遍历图片
+1选取了'http://image.baidu.com/search/flip?tn=baiduimage&ie=utf-8&word='月季花'     地址搜索图片，该地址有返回页码，比较容易遍历图片
 
 2百度图片使用了ajax动态获取数据，因此scrapy选用了splash做js动态渲染，splash怎么安装请自行百度
 
