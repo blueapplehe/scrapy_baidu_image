@@ -11,7 +11,7 @@
 
 4存在图片搜索关键字和图片路径使用mongodb存储，在baidu.pipelines.MongoDBPipeline中实现
 
-5配置中禁用了robots，修改了USER_AGENT，爬取图片时加上refer，这些是绕过百度拦截爬虫和防止盗链必须的。
+5配置中禁用了robots，修改了USER_AGENT，爬取图片时加上referer，这些是绕过百度拦截爬虫和防止盗链必须的。
 
 主要代码实现位置：
 
