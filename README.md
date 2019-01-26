@@ -9,7 +9,7 @@
 
 3下载图片，没有采用官方的ImagesPipeline模块，而是自实现了下载pipelines，在baidu.pipelines.MyDownloadImagePipeline位置
 
-4存在图片搜索名称和图片路径使用mongodb存储，在baidu.pipelines.MongoDBPipeline中实现
+4存在图片搜索关键字和图片路径使用mongodb存储，在baidu.pipelines.MongoDBPipeline中实现
 
 5配置中禁用了robots，修改了USER_AGENT，爬取图片时加上refer，这些是绕过百度拦截爬虫和防止盗链必须的。
 
