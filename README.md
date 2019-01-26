@@ -13,8 +13,11 @@
 
 5配置中禁用了robots，修改了USER_AGENT，爬取图片时加上refer，这些是绕过百度拦截爬虫和防止盗链必须的。
 
-代码实现位置
+主要代码实现位置：
+
 /baidu/spiders/imageSpider.py
+
+/baidu/pipelines.py
 
 
 最后说明，请文明爬取数据，不要太频繁，给对方服务器造成压力。
