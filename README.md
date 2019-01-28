@@ -3,7 +3,7 @@
 
 说明
 
-1选取了'http://image.baidu.com/search/flip?tn=baiduimage&ie=utf-8&word='+search_word地址搜索图片，该地址有返回页码，比较容易遍历图片
+1选取了'http://image.baidu.com/search/flip?tn=baiduimage&ie=utf-8&word='月季花'     地址搜索图片，该地址有返回页码，比较容易遍历图片
 
 2百度图片使用了ajax动态获取数据，因此scrapy选用了splash做js动态渲染，splash怎么安装请自行百度
 
@@ -11,7 +11,7 @@
 
 4存在图片搜索关键字和图片路径使用mongodb存储，在baidu.pipelines.MongoDBPipeline中实现
 
-5配置中禁用了robots，修改了USER_AGENT，爬取图片时加上refer，这些是绕过百度拦截爬虫和防止盗链必须的。
+5配置中禁用了robots，修改了USER_AGENT，爬取图片时加上referer，这些是绕过百度拦截爬虫和防止盗链必须的。
 
 主要代码实现位置：
 
