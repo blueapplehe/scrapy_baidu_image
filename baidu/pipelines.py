@@ -30,26 +30,33 @@ class MyDownloadImagePipeline(object):
         referer=item["referer"]
         referer=referer.encode("utf8")
         filename = os.path.basename(image_url)
+        ext=filename.split(".")[1]
+        if ext!="jpg" :
+            item["img_path"]=""
+            return item 
         new_name=""
         h1 = hashlib.md5(image_url.encode("utf8"))
         new_name=h1.hexdigest()
-        new_name+=".jpg"
-        search_word_dir=img_path+"/"+item["search_word"]
-        file_full_name = img_path+"/"+new_name #拼接图片名   
+        new_name+="."+ext
+        name_dir=img_path+"/"+item["name"]
+        if not os.path.exists(name_dir):
+            os.mkdir(name_dir)
+        file_full_name = name_dir+"/"+new_name #拼接图片名   
         if os.path.exists(file_full_name):
             print("图片已经存在,不进行下载:"+file_full_name)
             item["img_path"]=file_full_name
             return item
         else:
             try:
-                req = urllib.request.Request(image_url)
+                req = urllib.request.Request(image_url)      
                 req.add_header('Referer', referer)
-                f = urllib.request.urlopen(req)
+                f = urllib.request.urlopen(req, timeout=3)
                 pic = f.read()
                 fp = open(file_full_name ,'wb')
                 fp.write(pic) #写入图片   
                 item["img_path"]=file_full_name
-            except:
+            except Exception as e:
+                print(e)
                 item["img_path"]=""
             return item
           
@@ -58,7 +65,7 @@ class MongoDBPipeline(ImageItem):
         conn = MongoClient('127.0.0.1', 27017)
         db = conn.baidu
         image = db.image
-        name=item['search_word']
+        name=item['name']
         search_word=item['search_word']
         img_path=item["img_path"]
         image_url=item["image_url"]
