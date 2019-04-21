@@ -11,7 +11,11 @@
             "module": "scrapy",
             "args": [
                 "crawl",
+<<<<<<< HEAD
                 "image",
+=======
+                "weixin",
+>>>>>>> 13ef626bb32d1dcca15f00f823af964107fb8a05
                 "-o",
                 "bikes.json"
             ]
