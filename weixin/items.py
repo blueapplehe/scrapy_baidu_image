@@ -14,7 +14,15 @@ class BaiduItem(scrapy.Item):
     pass
 
 
-class ImageItem(scrapy.Item):
+class ArticleItem(scrapy.Item):
+    # define the fields for your item here like:
+    search_word = scrapy.Field()
+    title=scrapy.Field()
+    publish_time = scrapy.Field()
+    js_name = scrapy.Field()
+    content=scrapy.Field()
+
+class ImageItemDetail(scrapy.Item):
     # define the fields for your item here like:
     name = scrapy.Field()
     search_word = scrapy.Field()
@@ -23,4 +31,4 @@ class ImageItem(scrapy.Item):
     images = scrapy.Field()
     referer=scrapy.Field()
     img_path=scrapy.Field()
-    pass
+    detail_url=scrapy.Field()
