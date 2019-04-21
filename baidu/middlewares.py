@@ -143,7 +143,7 @@ class ChromeSpiderMiddleware(object):
                 time.sleep(request.meta.get("wait_time"))
             rendered_body = self.browser.page_source
             print("页面完成渲染")
-            return HtmlResponse(request.url, body=rendered_body, encoding="utf-8")
+            return HtmlResponse(request.url, body=rendered_body, encoding="utf-8",request=request)
 
     def spider_closed(self, spider, reason):
         print("关闭浏览器")
