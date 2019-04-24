@@ -53,11 +53,11 @@ DOWNLOAD_DELAY = 1
 # Enable or disable downloader middlewares
 # See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
-  
     'baidu.middlewares.BaiduDownloaderMiddleware': 543,
-    'scrapy_splash.SplashCookiesMiddleware': 723,
-    'scrapy_splash.SplashMiddleware': 725,
-    'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware': 810,
+    'baidu.middlewares.ChromeSpiderMiddleware': 544,
+   # 'scrapy_splash.SplashCookiesMiddleware': 723,
+   # 'scrapy_splash.SplashMiddleware': 725,
+   # 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware': 810,
    #'scrapy.pipelines.images.ImagesPipeline':5,
    #'baidu.pipelines.DownloadImagePipeline': 999,
 }
@@ -73,9 +73,9 @@ DUPEFILTER_CLASS = 'scrapy_splash.SplashAwareDupeFilter'
 # Configure item pipelines
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-   #'baidu.pipelines.BaiduPipeline': 300,
-   #'baidu.pipelines.DownloadImagePipeline': 301,
-   'baidu.pipelines.MyDownloadImagePipeline': 302,
+   'baidu.pipelines.BaiduPipeline': 300,
+   'baidu.pipelines.DownloadImagePipeline': 301,
+   #'baidu.pipelines.MyDownloadImagePipeline': 302,
    'baidu.pipelines.MongoDBPipeline': 303,
     
 }
@@ -101,5 +101,5 @@ ITEM_PIPELINES = {
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 
-IMAGES_STORE = '/data'
+IMAGES_STORE = '/data/scrapydownload'
 IMAGES_EXPIRES = 30

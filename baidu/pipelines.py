@@ -14,14 +14,40 @@ import urllib.request
 import random
 import hashlib
 from pymongo import MongoClient
+import time
+from scrapy.conf import settings
+import shutil
 class BaiduPipeline(ImageItem):
     def process_item(self, item, spider):
         return item
-
+        
 class DownloadImagePipeline(ImagesPipeline):
     def get_media_requests(self,item,info):
         image_url=item["image_url"]
-        yield scrapy.Request(image_url)
+        yield scrapy.Request(url=image_url,meta={'is_image': True})
+
+    def item_completed(self, results, item, info):
+        image_paths = [x['path'] for ok, x in results if ok]
+        if not image_paths:
+            #raise DropItem("Item contains no images")
+            return item
+        IMAGES_STORE=settings.get('IMAGES_STORE')
+        if image_paths[0]:
+            target_path="/data/baidu"
+            name_dir=target_path+"/"+item["name"]
+            if not os.path.exists(name_dir):
+                os.mkdir(name_dir)
+            origin_file=IMAGES_STORE+"/"+image_paths[0]
+            filename = os.path.basename(origin_file)
+            ext=filename.split(".")[1]
+            ext=ext.lower()
+            if ext!="jpg" and ext!="png" and ext!="jpeg":
+                item["img_path"]=""
+                return item 
+            target_file=name_dir+"/"+filename
+            shutil.copyfile(origin_file,target_file)
+            item['img_path'] = target_file
+            return item
         
 class MyDownloadImagePipeline(object):
     def process_item(self, item, spider):

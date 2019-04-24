@@ -101,3 +101,79 @@ class BaiduDownloaderMiddleware(object):
 
     def spider_opened(self, spider):
         spider.logger.info('Spider opened: %s' % spider.name)
+        
+from selenium import webdriver
+from scrapy.http import HtmlResponse
+import time
+from selenium.webdriver.chrome.options import Options     
+import pickle
+from selenium.webdriver.support.wait import WebDriverWait
+class ChromeSpiderMiddleware(object):
+
+    def __init__(self):
+        option = Options()
+        option.add_argument('--headless')
+        print("初始化浏览器")
+        self.browser = webdriver.Chrome(executable_path="/usr/bin/chromedriver",chrome_options=option)
+#         self.browser.get("https://image.baidu.com")
+#         time.sleep(30)
+#         pickle.dump( self.browser.get_cookies() , open("/data/cookies/cookies.pkl","wb"))
+#         cookies = pickle.load(open("/data/cookies/cookies.pkl", "rb"))
+#         print(cookies)
+#         for cookie in cookies:
+#             self.browser.add_cookie(cookie)
+
+    def process_request(self, request, spider):
+        # Called for each request that goes through the downloader
+        # middleware.
+        # Must either:
+        # - return None: continue processing this request
+        # - or return a Response object
+        # - or return a Request object
+        # - or raise IgnoreRequest: process_exception() methods of
+        #   installed downloader middleware will be called
+        if request.meta.get("is_image"):
+            print("存在is_image")#如果是图片就不进行渲染了
+            return None
+        else:
+            self.browser.get(request.url)
+            print("页面开始渲染")
+            self.browser.execute_script('window.scrollTo(0, document.body.scrollHeight)')
+            #self.browser.execute_script("scroll(0, 1000);")
+            if request.meta.get("is_detail"):
+                #time.sleep(request.meta.get("wait_time"))
+                image_item=request.meta.get("item")
+                image_url=image_item["image_url"]
+                wait =WebDriverWait(self.browser,20)
+                browser=self.browser
+                wait.until(lambda browser:browser.find_element_by_xpath('//img[@id="currentImg"]').get_attribute("src")!=image_url)
+            # rendered_body = self.browser.page_source
+            rendered_body = self.browser.page_source
+            print("页面完成渲染")
+            return HtmlResponse(request.url, body=rendered_body, encoding="utf-8")
+
+    def spider_closed(self, spider, reason):
+        print("关闭浏览器")
+        self.browser.quit()
+        
+#from scrapy.http import HtmlResponse
+        
+# from selenium.common.exceptions import TimeoutException
+# import time
+
+# class SeleniumMiddleware(object):
+#     def process_request(self, request, spider):
+#         if spider.name == 'jingdong':
+#             try:
+#                 spider.browser.get(request.url)
+#                 spider.browser.execute_script('window.scrollTo(0, document.body.scrollHeight)')
+#             except TimeoutException as e:
+#                 print('超时')
+#                 spider.browser.execute_script('window.stop()')
+#             time.sleep(2)
+#             return HtmlResponse(url=spider.browser.current_url, body=spider.browser.page_source,
+#                                 encoding="utf-8", request=request)
+
+        
+        
+        

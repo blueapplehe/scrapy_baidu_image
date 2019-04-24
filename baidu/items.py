@@ -23,4 +23,17 @@ class ImageItem(scrapy.Item):
     images = scrapy.Field()
     referer=scrapy.Field()
     img_path=scrapy.Field()
+    detail_url=scrapy.Field()
+    pass
+
+class ImageItemDetail(scrapy.Item):
+    # define the fields for your item here like:
+    name = scrapy.Field()
+    search_word = scrapy.Field()
+    image_url=scrapy.Field()
+    image_urls = scrapy.Field()
+    images = scrapy.Field()
+    referer=scrapy.Field()
+    img_path=scrapy.Field()
+    detail_url=scrapy.Field()
     pass
