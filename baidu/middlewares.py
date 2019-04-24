@@ -140,7 +140,6 @@ class ChromeSpiderMiddleware(object):
             print("页面开始渲染")
             self.browser.execute_script('window.scrollTo(0, document.body.scrollHeight)')
             #self.browser.execute_script("scroll(0, 1000);")
-<<<<<<< HEAD
             if request.meta.get("is_detail"):
                 #time.sleep(request.meta.get("wait_time"))
                 image_item=request.meta.get("item")
@@ -152,13 +151,6 @@ class ChromeSpiderMiddleware(object):
             rendered_body = self.browser.page_source
             print("页面完成渲染")
             return HtmlResponse(request.url, body=rendered_body, encoding="utf-8")
-=======
-            if request.meta.get("wait_time"):
-                time.sleep(request.meta.get("wait_time"))
-            rendered_body = self.browser.page_source
-            print("页面完成渲染")
-            return HtmlResponse(request.url, body=rendered_body, encoding="utf-8",request=request)
->>>>>>> e6d0a51dc94ff68cd1d2b0b3372f59cd1399d74f
 
     def spider_closed(self, spider, reason):
         print("关闭浏览器")
