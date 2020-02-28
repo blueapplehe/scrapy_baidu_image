@@ -19,12 +19,19 @@
 
 
 需要安装的库：
+
   pip install scrapy==1.6 requests -i http://mirrors.aliyun.com/pypi/simple/ --trusted-host mirrors.aliyun.com
+  
   pip install selenium -i http://mirrors.aliyun.com/pypi/simple/ --trusted-host mirrors.aliyun.com
+  
   pip install scrapy_splash -i http://mirrors.aliyun.com/pypi/simple/ --trusted-host mirrors.aliyun.com
+  
   pip install pillow -i http://mirrors.aliyun.com/pypi/simple/ --trusted-host mirrors.aliyun.com
+  
   pip install requests -i http://mirrors.aliyun.com/pypi/simple/ --trusted-host mirrors.aliyun.com
+  
   pip install pymongo -i http://mirrors.aliyun.com/pypi/simple/ --trusted-host mirrors.aliyun.com
+  
 
 做该爬虫主要是本人做神经网络研究时使用，所以分享出来给大家了，轮子还是不错，实现简洁，2019年1月还是可以正常使用，以后每月更新一次
 
