@@ -112,7 +112,7 @@ class ChromeSpiderMiddleware(object):
 
     def __init__(self):
         option = Options()
-        option.add_argument('--headless')
+        #option.add_argument('--headless')
         print("初始化浏览器")
         self.browser = webdriver.Chrome(executable_path="/usr/bin/chromedriver",chrome_options=option)
 #         self.browser.get("https://image.baidu.com")
