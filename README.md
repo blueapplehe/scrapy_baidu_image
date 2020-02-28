@@ -31,7 +31,12 @@
   pip install requests -i http://mirrors.aliyun.com/pypi/simple/ --trusted-host mirrors.aliyun.com
   
   pip install pymongo -i http://mirrors.aliyun.com/pypi/simple/ --trusted-host mirrors.aliyun.com
-  
+ 
+ chrome驱动下载地址
+ 
+ https://npm.taobao.org/mirrors/chromedriver/
+ 
+ 下载和自己浏览器版本对应的驱动
 
 做该爬虫主要是本人做神经网络研究时使用，所以分享出来给大家了，轮子还是不错，实现简洁，2019年1月还是可以正常使用，以后每月更新一次
 
