@@ -37,6 +37,14 @@
  https://npm.taobao.org/mirrors/chromedriver/
  
  下载和自己浏览器版本对应的驱动
+ 
+ 修改middlewares.py文件中的
+ 
+ self.browser = webdriver.Chrome(executable_path="D:/scrapy_baidu_image/chromedriver.exe",chrome_options=option)
+ 
+ executable_path指向你为你下载的chromedriver.exe的目录文件路径
+ 
+ 
 
 做该爬虫主要是本人做神经网络研究时使用，所以分享出来给大家了，轮子还是不错，实现简洁，2019年1月还是可以正常使用，以后每月更新一次
 
