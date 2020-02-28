@@ -20,7 +20,7 @@
 
 需要安装的库：
 
-  pip install scrapy==1.6 requests -i http://mirrors.aliyun.com/pypi/simple/ --trusted-host mirrors.aliyun.com
+  pip install scrapy==1.6 -i http://mirrors.aliyun.com/pypi/simple/ --trusted-host mirrors.aliyun.com
   
   pip install selenium -i http://mirrors.aliyun.com/pypi/simple/ --trusted-host mirrors.aliyun.com
   
