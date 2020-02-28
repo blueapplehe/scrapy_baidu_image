@@ -76,7 +76,7 @@ ITEM_PIPELINES = {
    'baidu.pipelines.BaiduPipeline': 300,
    'baidu.pipelines.DownloadImagePipeline': 301,
    #'baidu.pipelines.MyDownloadImagePipeline': 302,
-   'baidu.pipelines.MongoDBPipeline': 303,
+   #'baidu.pipelines.MongoDBPipeline': 303,
     
 }
 
